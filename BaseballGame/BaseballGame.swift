@@ -2,14 +2,32 @@
 //  BaseballGame.swift
 //  BaseballGame
 //
-//  Created by t2023-m0023 on 6/13/24.
+//  Created by  on 6/13/24.
 //
 
-import Foundation
+
+func isValidNumber(userNum: Int) -> Bool {
+
+    // 세 자리 수인지 확인
+    if userNum < 100 || userNum > 999 {
+        print("세 자리 수를 입력해주세요.")
+        return false
+    }
+    // 중복된 숫자가 있는지 확인,
+    // 숫자 > 문자열 > 문자의 집합 count를 통해 요소 숫자가 3인지 확인하여 중복숫자 검사
+    let userNumStr = String(userNum)
+    let numSet = Set(userNumStr)
+    if numSet.count != 3 {
+        print("특정 숫자가 두 번 사용되었습니다. 다시 입력해주세요.")
+        return false
+    }
+    return true
+}
 
 class BaseballGame {
     func startgame() {
         let answerNum = makeAnswerNum() // 정답을 만드는 함수
+
 
         //게임 반복을 위한 while 문
         while true {
@@ -61,6 +79,12 @@ class BaseballGame {
         var numbers = [Int]()
         while numbers.count < 3 {
             let randomNum = Int.random(in: 0...9)
+            // 숫자가 비어있거나 0이면 초기화하고 첫번째 숫자부터 다시 생성
+            if numbers.isEmpty && randomNum == 0 {
+                numbers.removeAll()
+                continue
+            }
+            // 생성된 숫자가 배열에 포함되어 있지 않을때만 배열에 추가됨
             if !numbers.contains(randomNum) {
                 numbers.append(randomNum)
             }
