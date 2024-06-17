@@ -7,5 +7,5 @@
 
 import Foundation
 
-let game = BaseballGame()
-game.game()
+let start = GameManage()
+start.mainMenu()
