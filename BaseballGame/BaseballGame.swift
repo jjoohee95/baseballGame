@@ -40,6 +40,11 @@ class BaseballGame {
 
     func isValidNumber(userNum: Int) -> Bool {
         let userNumStr = String(userNum)
+        // 첫 번째 자리 숫자에 0을 입력했을 경우
+        if userNum /100 == 0 && userNum != 0 {
+        print("첫 번째 자리에 0이 입력될 수 없습니다. 다시 입력해주세요.")
+        return false
+        }
 
         // 세 자리 숫자를 입력했는지 확인
         guard userNumStr.count == 3 else {
