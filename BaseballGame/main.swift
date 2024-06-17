@@ -7,5 +7,5 @@
 
 import Foundation
 
-let start = GameManage()
-start.mainMenu()
+let gameManager = GameManage()
+gameManager.mainMenu()
